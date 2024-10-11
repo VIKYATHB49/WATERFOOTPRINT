@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../CSS/HOME2.css">
+    <style>
+        
+        .hero-section {
+            background-image: url('../IMAGES/banner.webp');
+
+            background-size:cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 60vh;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-content {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .content-section {
+            padding: 50px 20px;
+        }
+        .card {
+            margin: 15px;
+        }
+        .about-us {
+            padding: 100px 20px;
+            background-color: #515151;
+            color: #ffffff;
+        }
+        h3, h2 {
+            margin-bottom: 20px;
+
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar bg-body-tertiary">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="../IMAGES/logo.png" alt="Bootstrap" width="auto" height="80">
+            </a>
+            <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">
+                How to Reduce Water Footprint
+            </a>
+            <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">
+                Water Conservation Tips
+            </a>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Colour Theme
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Light</a></li>
+                    <li><a class="dropdown-item" href="#">Dark</a></li>
+                </ul>
+            </div>
+            <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">
+               Profile
+            </a>
+            
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>Welcome to the Water Footprint Calculator</h1>
+            <p>Calculate your water usage and take steps to reduce your impact on the environment.</p>
+            <a href="#calculators" class="btn btn-light">Start Calculating</a>
+        </div>
+    </div>
+
+    <!-- Calculators Section -->
+    <div id="theme-container" class="theme-container light-theme">
+        <div class="content-section" id="calculators">
+            <h3 align="center">Calculate Your Water Footprint</h3>
+            <div class="row justify-content-center">
+                <div class="card" style="width: 13rem;">
+                    <img src="../IMAGES/shower.jpg" class="card-img-top" alt="Shower">
+                    <div class="card-body">
+                        <h5 class="card-title">Shower Water Usage</h5>
+                        <a href="WASHING.html" class="btn btn-primary">Calculate</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 13rem;">
+                    <img src="../IMAGES/toilet.jpg" class="card-img-top" alt="Toilet">
+                    <div class="card-body">
+                        <h5 class="card-title">Toilet Water Usage</h5>
+                        <a href="Geyser.html" class="btn btn-primary">Calculate</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 13rem;">
+                    <img src="../IMAGES/sink.jpg" class="card-img-top" alt="Sink">
+                    <div class="card-body">
+                        <h5 class="card-title">Sink Water Usage</h5>
+                        <a href="Dish-washer.html" class="btn btn-primary">Calculate</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 13rem;">
+                    <img src="../IMAGES/lawn.jpg" class="card-img-top" alt="Lawn">
+                    <div class="card-body">
+                        <h5 class="card-title">Lawn Water Usage</h5>
+                        <a href="LAWN.html" class="btn btn-primary">Calculate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Us Section -->
+    <div class="about-us">
+        <h2 align="center">About Us</h2>
+
+
+        <ul>
+            <li>Our mission is to provide a simple and easy-to-use platform for individuals to calculate their water footprint and take steps to reduce their water usage. 
+                We believe that every small step counts, and by working together, we can make a significant impact on the environment.</li>
+                <li>
+                    Our team consists of passionate individuals who are dedicated to creating a sustainable future. We are committed to providing accurate and reliable information to help individuals make informed decisions about their water usage.
+                </li>
+                <li>
+                    If you have any questions or feedback, please don't hesitate to contact us. We would love to hear from you!
+                </li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center p-4">
+        <p>&copy; 2024 Water Footprint Calculator. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

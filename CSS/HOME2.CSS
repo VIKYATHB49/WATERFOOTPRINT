@@ -1,0 +1,23 @@
+body{
+    margin: 0;
+    font-family:sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+
+}
+.theme-container {
+    width: 100%;
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+/* Dark theme styles */
+.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+/* Light theme styles */
+.light-theme {
+    background-color: #f0f0f0;
+    color: #333;
+} 
