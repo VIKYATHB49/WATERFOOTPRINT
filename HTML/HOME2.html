@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../CSS/HOME2.css">
+    <style>
+        .hero-section {
+            background-image: url('../IMAGES/banner.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 60vh;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-content {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .content-section {
+            padding: 50px 20px;
+        }
+        .card {
+            margin: 15px;
+        }
+        .about-section {
+            padding-left: 30px;
+            padding-right: 30px;
+            margin-bottom: 10px; 
+        }
+        .col-md-4 {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            text-align: center;
+        }
+        .about-section p {
+            font-size: 1.1rem;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .profile-sidebar {
+            position: fixed;
+            right: -30%; /* Start offscreen */
+            top: 0;
+            width: 30%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            transition: right 0.3s ease;
+            z-index: 1000; 
+        }
+        .profile-sidebar.show {
+            right: 0;
+        }
+        .navbar .profile-link:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        #userDetails {
+            text-align: left; /* Align text to the left for better readability */
+        }
+        #userDetails table {
+            width: 100%;
+            border-collapse: collapse; /* Ensure borders collapse */
+        }
+        #userDetails td {
+            padding: 10px 0;
+            vertical-align: top; /* Align text to the top of the cell */
+            padding-right: 20px; /* Add space between columns */
+        }
+        .welcome-message {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center; /* Center-align the welcome message */
+            color: #333; /* Change text color for better contrast */
+        }
+    </style>
+    <script>
+        // Function to get a cookie by name
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // Function to display user details from cookies
+        function displayUserDetails() {
+            var username = getCookie('userName');
+            var email = getCookie('userEmail');
+            var location = getCookie('userLocation');
+
+            // Replace "+" with spaces in the retrieved data
+            if (username && email && location) {
+                document.getElementById('userDetails').innerHTML = 
+                    `<div class="welcome-message">Welcome, ${decodeURIComponent(username.replace(/\+/g, ' '))}</div>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Username:</td>
+                                <td>${decodeURIComponent(username.replace(/\+/g, ' '))}</td>
+                            </tr>
+                            <tr>
+                                <td>Email:</td>
+                                <td>${decodeURIComponent(email.replace(/\+/g, ' '))}</td>
+                            </tr>
+                            <tr>
+                                <td>Location:</td>
+                                <td>${decodeURIComponent(location.replace(/\+/g, ' '))}</td>
+                            </tr>
+                        </tbody>
+                    </table>`;
+            } else {
+                document.getElementById('userDetails').innerHTML = "<p>No user data found. Please log in.</p>";
+            }
+        }
+    </script>
+</head>
+<body onload="displayUserDetails()">
+    <!-- Navbar -->
+    <nav class="navbar bg-body-tertiary">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="../IMAGES/logo.png" alt="Bootstrap" width="auto" height="80">
+            </a>
+            <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="http://localhost:8080/Projects/HTML/howtoreduce.HTML">
+                How to Reduce Water Footprint 
+            </a>
+            <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="howtoreduce.HTML">
+                Water Conservation Tips
+            </a>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Colour Theme
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Light</a></li>
+                    <li><a class="dropdown-item" href="#">Dark</a></li>
+                </ul>
+            </div>
+            <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover profile-link" id="profileLink">
+                Profile
+            </a>
+        </div>
+    </nav>
+
+    <!-- Profile Sidebar -->
+    <div class="profile-sidebar" id="profileSidebar">
+        <div id="userDetails">
+            <!-- User details will be displayed here -->
+        </div>
+        <button class="btn btn-secondary" onclick="closeProfile()">Close</button>
+    </div>
+
+    <script>
+        const profileLink = document.getElementById('profileLink');
+        const profileSidebar = document.getElementById('profileSidebar');
+
+        // Show the sidebar when hovering over the profile link
+        profileLink.addEventListener('mouseenter', () => {
+            profileSidebar.classList.add('show');
+        });
+
+        // Hide the sidebar when mouse leaves the profile link and sidebar
+        profileLink.addEventListener('mouseleave', checkMouseLeave);
+        profileSidebar.addEventListener('mouseleave', checkMouseLeave);
+
+        function checkMouseLeave() {
+            if (!profileLink.matches(':hover') && !profileSidebar.matches(':hover')) {
+                profileSidebar.classList.remove('show');
+            }
+        }
+
+        // Function to close the profile sidebar
+        function closeProfile() {
+            profileSidebar.classList.remove('show');
+        }
+    </script>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>Welcome to the Water Footprint Calculator</h1>
+            <p>Calculate your water usage and take steps to reduce your impact on the environment.</p>
+            <a href="#calculators" class="btn btn-light">Start Calculating</a>
+        </div>
+    </div>
+
+    <!-- Calculators Section -->
+    <div id="theme-container" class="theme-container light-theme">
+        <div class="content-section" id="calculators">
+            <h3 align="center">Calculate Your Water Footprint</h3>
+            <div class="row justify-content-center">
+                <div class="card" style="width: 13rem;">
+                    <img src="../IMAGES/washing-machine.jpg" class="card-img-top" alt="Shower">
+                    <div class="card-body">
+                        <h5 class="card-title">Washing</h5>
+                        <a href="WASHING.html" class="btn btn-primary">Calculate</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 13rem;">
+                    <img src="../IMAGES/Geyser.jpeg" class="card-img-top" alt="Toilet">
+                    <div class="card-body">
+                        <h5 class="card-title">Geyser</h5>
+                        <a href="Geyser.html" class="btn btn-primary">Calculate</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 13rem;">
+                    <img src="../IMAGES/dish.jpg" class="card-img-top" alt="Sink">
+                    <div class="card-body">
+                        <h5 class="card-title">Dish-washer</h5>
+                        <a href="DISHWASHER.html" class="btn btn-primary">Calculate</a>
+                    </div>
+                </div>
+                <div class="card" style="width: 13rem;">
+                    <img src="../IMAGES/bath.png" class="card-img-top" alt="Lawn">
+                    <div class="card-body">
+                        <h5 class="card-title">Bath-Tub</h5>
+                        <a href="BATHTUB.html" class="btn btn-primary">Calculate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="about-section">
+        <h2>About Water Footprint Calculator</h2>
+        <p>Our mission is to provide individuals with a simple platform to calculate their water footprint and take meaningful steps towards sustainability. Every action, whether big or small, counts toward a more water-conscious world.</p>
+        <p>We believe that by understanding our water usage, we can make better decisions that lead to a more sustainable future. Our calculators give you a detailed insight into your consumption so you can make informed changes to save water.</p>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <b><h5>Why Water Conservation Matters</h5></b>
+                <p>Water conservation helps protect the environment and ensures that we have a sustainable source of water.</p>
+            </div>
+            <div class="col-md-4">
+                <b><h5>Practical Water-Saving Tips</h5></b>
+                <ul>
+                    <li><p>Fix leaks and dripping taps.</p></li>
+                    <li><p>Use low-flow showerheads and faucets.</p></li>
+                    <li><p>Collect rainwater for garden use.</p></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <b><h5>Water Footprint and the Environment</h5></b>
+                <p>By understanding our water footprint, we can take actionable steps toward reducing it and minimizing our impact on freshwater sources and ecosystems.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Water Footprint - Sustainable Development. All Rights Reserved.</p>
+        <p><a href="CONTACT.html" class="text-light">Contact Us</a> | <a href="PRIVACY.html" class="text-light">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>

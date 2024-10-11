@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="website icon" href="website-icon.png">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            padding: 40px;
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .login-image {
+            max-width: 450px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .form-container {
+            max-width: 450px;
+            width: 100%;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 200px;
+            height: auto;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            margin-left: 5px;
+            margin-bottom: 8px;
+        }
+
+        .icons {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            height: 45px;
+            padding-left: 10px;
+            gap: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+        }
+
+        .password-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox {
+            width: 17px;
+            height: 17px;
+            cursor: pointer;
+        }
+
+        .sign-in {
+            width: 100%;
+            margin: 20px auto;
+            height: 50px;
+            background-color: rgb(47, 77, 224);
+            color: white;
+            border: transparent;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        a {
+            color: rgb(97, 113, 255);
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+       /* Desktop and Laptop Devices (width >= 1200px) */
+        @media (min-width: 1200px) {
+            .container {
+                display: flex;
+                justify-content: space-between;
+            }
+            .login-image {
+                width: 40%;
+            }
+            .form-container {
+                width: 50%;
+                height: fit-content;
+            }
+        }
+
+        /* Tablet Devices (width >= 768px and < 1200px) */
+        @media (min-width: 768px) and (max-width: 1199px) {
+            .container {
+                display: flex;
+                justify-content: space-between;
+            }
+            .login-image {
+                width: 30%;
+            }
+            .form-container {
+                vertical-align: middle;
+                display: inline;
+                width: 60%;
+                height: fit-content;
+            }
+        }
+
+        /* Mobile Devices (width < 768px) */
+        @media (max-width: 767px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .login-image {
+                display: none;
+            }
+            .form-container {
+                display: inline;
+                width: 100%;
+                height: 100%;
+            }
+            .logo {
+                display: none;
+            }
+            .sign-in {
+                font-size: 16px;
+            }
+        }
+    </style>
+   
+</head>
+<body>
+
+    <div class="container">
+        <!-- Login Image -->
+        <img src="../IMAGES/login.jpg" alt="login" class="login-image">
+
+        <!-- Login Form -->
+        <div class="form-container">
+            <form action="../Login" method="post">
+                <div style="text-align:center">
+                    <img src="../IMAGES/logo.png" alt="logo" class="logo">
+                    <p><b>LOGIN</b></p>
+                </div>
+
+                <!-- Email -->
+                <label for="email">Your Email</label>
+                <div class="icons">
+                    <img src="../IMAGES/user.png" class="icon">
+                    <input type="email" id="email" placeholder="Email" class="input" name="email"  required>
+                </div>
+
+                <!-- Password -->
+                <label for="password">Password</label>
+                <div class="icons">
+                    <img src="../IMAGES/key.png" class="icon">
+                    <input type="password" placeholder="Password" id="password" name="password" class="input" required>
+                </div>
+
+                <!-- Password Options (Show Password and Forgot Password) -->
+                <div class="password-options">
+                    <div class="checkbox-container">
+                        <input type="checkbox" class="checkbox" onclick="Visibility()"> Show Password
+                    </div>
+                    <div class="forgot-password">
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                </div>
+
+                <!-- Sign In Button -->
+                <input type="submit" class="sign-in" value="Sign in">
+
+                <!-- Sign Up Link -->
+                <div class="signup-link">
+                    <p>Don't have an account? <a href="REGISTER.html">Sign up</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function Visibility() {
+            const passwordInput = document.getElementById('password');
+            passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+        }
+    </script>
+
+</body>
+</html>

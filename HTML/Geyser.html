@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geyser Water Footprint Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f2e9;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background-color: rgb(0, 166, 222);
+        }
+
+        .scale {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 100%;
+            background-color: transparent;
+        }
+
+        .label {
+            position: absolute;
+            left: 100%;
+            font-size: 16px;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 80px;
+            text-align: left;
+            z-index: -1;
+        }
+
+        .label.half-visible-top {
+            margin-top: -10%;
+        }
+
+        .label.half-visible-bottom {
+            margin-top: -90%;
+        }
+
+        .line {
+            position: absolute;
+            left: 0;
+            width: 20px;
+            height: 1px;
+            background-color: rgb(0, 166, 222);
+        }
+
+        .container1 {
+            width: 100%;
+            background-color: transparent;
+            height: 100%;
+            display: flex;
+        }
+
+        .left-panel {
+            padding: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .water-level {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #005b8a;
+            transition: height 0.5s ease;
+            height: 0%;
+        }
+
+        .calculator {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            width: 50%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #005b8a;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        label {
+            font-size: 15px;
+            margin-bottom: 10px;
+            display: block;
+            color: #333;
+            text-align: center;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button {
+            background-color: #005b8a;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        button:hover {
+            background-color: #007bbf;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="scale">
+        <div class="label half-visible-top" style="top: 0%;">300 lts </div>
+        <div class="label" style="top: 50%;">150 lts </div>
+        <div class="label half-visible-bottom" style="top: 100%;">0 lts</div>
+
+        <div class="line" style="top: 10%;"></div>
+        <div class="line" style="top: 20%;"></div>
+        <div class="line" style="top: 30%;"></div>
+        <div class="line" style="top: 40%;"></div>
+        <div class="line" style="top: 60%;"></div>
+        <div class="line" style="top: 70%;"></div>
+        <div class="line" style="top: 80%;"></div>
+        <div class="line" style="top: 90%;"></div>
+    </div>
+</div>
+
+<div class="container1">
+    <div class="left-panel" id="waterFootprintDisplay">
+        <div class="water-level" id="waterLevel"></div>
+        <div class="calculator">
+            <h2 id="resultTitle">Geyser Water Footprint Calculator</h2>
+
+            <div class="question" id="question1">
+                <label>What type of geyser do you use?</label>
+                <div class="button-group">
+                    <button onclick="answerQuestion(1, 'instant')">Instant</button>
+                    <button onclick="answerQuestion(1, 'storage')">Storage</button>
+                </div>
+            </div>
+
+            <div class="question" id="question2" style="display:none;">
+                <label>How many times do you use the geyser in a week?</label>
+                <div class="button-group">
+                    <button onclick="answerQuestion(2, '1-2')">1-2</button>
+                    <button onclick="answerQuestion(2, '3-4')">3-4</button>
+                    <button onclick="answerQuestion(2, '5+')">5+</button>
+                </div>
+            </div>
+
+            <div class="question" id="question3" style="display:none;">
+                <label>What is the average time you use the geyser per session?</label>
+                <div class="button-group">
+                    <button onclick="answerQuestion(3, '15-30')">15-30 mins</button>
+                    <button onclick="answerQuestion(3, '30-45')">30-45 mins</button>
+                </div>
+            </div>
+
+            <div class="question" id="question4" style="display:none;">
+                <label>Do you have a water-saving feature on your geyser?</label>
+                <div class="button-group">
+                    <button onclick="answerQuestion(4, 'yes')">Yes</button>
+                    <button onclick="answerQuestion(4, 'no')">No</button>
+                </div>
+            </div>
+
+            <div class="question" id="question5" style="display:none;">
+                <label>How old is your geyser?</label>
+                <div class="button-group">
+                    <button onclick="answerQuestion(5, 'new')">Less than 3 years</button>
+                    <button onclick="answerQuestion(5, 'old')">3+ years</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    let waterFootprint = 0;
+
+    function answerQuestion(step, answer) {
+        if (step === 1) {
+            waterFootprint += (answer === 'instant') ? 20 : 40;
+        } else if (step === 2) {
+            waterFootprint += (answer === '1-2') ? 20 : (answer === '3-4') ? 30 : 40;
+        } else if (step === 3) {
+            waterFootprint += (answer === '15-30') ? 30 : 50;
+        } else if (step === 4) {
+            waterFootprint += (answer === 'yes') ? 20 : 40;
+        } else if (step === 5) {
+            waterFootprint += (answer === 'new') ? 10 : 30;
+            displayResult();
+            document.getElementById('question5').style.display = 'none';
+        }
+
+        updateDisplay();
+        nextQuestion(step);
+    }
+
+    function nextQuestion(step) {
+        document.getElementById(`question${step}`).style.display = 'none';
+        document.getElementById(`question${step + 1}`).style.display = 'block';
+    }
+
+    function displayResult() {
+        const resultTitle = document.getElementById('resultTitle');
+        resultTitle.innerHTML = `Your Geyser Water Footprint is ${waterFootprint} liters per week`;
+    }
+
+    function updateDisplay() {
+        const heightPercentage = Math.min((waterFootprint / 300) * 100, 100);
+        document.getElementById('waterLevel').style.height = `${heightPercentage}%`;
+    }
+</script>
+
+</body>
+</html>
